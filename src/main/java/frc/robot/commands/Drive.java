@@ -20,30 +20,25 @@ public class Drive extends Command {
 	public Drive() {
 	}
 
-	public void execute(){
+	public void execute() {
+		//Raw inputs: DOWN and RIGHT are positive
+		double xboxLY = -Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY(); //UP on stick = xboxLY positive
+		double xboxRX = Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX(); //RIGHT on stick = xboxRX positive
+		System.out.println("XboxRX" + xboxRX);
+
+		double forwardPower = xboxLY * Constants.Drive.slowModifierStraight; 
+		double turnPower = xboxRX * Constants.Drive.slowModifierTurn; 
+
+		//Setting motors to a positive value should move the robot forwards
+		Components.motorR1.set(ControlMode.PercentOutput, (forwardPower - turnPower));
+		Components.motorR2.set(ControlMode.PercentOutput, (forwardPower - turnPower));
+		Components.motorR3.set(ControlMode.PercentOutput, (forwardPower - turnPower));
+		Components.motorL1.set(ControlMode.PercentOutput, (forwardPower + turnPower));
+		Components.motorL2.set(ControlMode.PercentOutput, (forwardPower + turnPower));
+		Components.motorL3.set(ControlMode.PercentOutput, (forwardPower + turnPower));
 		
-
-		double leftPower;
-		double rightPower;
-		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
-		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
-
-
-		// leftPower = (xboxY - xboxX);
-		// rightPower = (xboxY + xboxX);
-		leftPower = xboxLY; 
-		rightPower = xboxRY; //slow modifier
-
-		//System.out.println(leftPower + "   " + rightPower);
-		System.out.println(Components.motorR3.getSelectedSensorVelocity());
-		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		
-		
+		//System.out.println(IO.xboxDrive.getLeftY() + "foward");
+		//System.out.println(IO.xboxDrive.getRightX() + "turn");
 		}
 	@Override
 	public void initialize() {

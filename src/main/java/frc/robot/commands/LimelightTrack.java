@@ -41,8 +41,8 @@ public class LimelightTrack extends Command {
 			rightPower -= 0.3;
 		}
  
-		leftPower *= Constants.Drive.slowModifier;
-		rightPower *= Constants.Drive.slowModifier; 
+		leftPower *= Constants.Drive.slowModifierStraight;
+		rightPower *= Constants.Drive.slowModifierStraight; 
 		System.out.println(leftPower + "   " + rightPower);
 		
 		Components.motorR1.set(ControlMode.PercentOutput, rightPower);
