@@ -26,12 +26,12 @@ public class Drive extends Command {
 		double leftPower;
 		double rightPower;
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
-		double xboxRX = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
+		double xboxRX = -Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX();
 		//makes it so that one set of wheels can go backwards so that it can turn
 
 
-		leftPower = (xboxLY - xboxRX);
-		rightPower = (xboxLY + xboxRX);
+		leftPower = (xboxRX - xboxLY);
+		rightPower = (xboxRX + xboxLY);
 		//leftPower = xboxLY; 
 		//rightPower = xboxRY; //slow modifier
 		//assigning 
