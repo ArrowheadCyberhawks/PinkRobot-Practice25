@@ -21,13 +21,15 @@ public class Drive extends Command {
 	}
 
 	public void execute(){
-		
+
+
+
 
 		double leftPower;
 		double rightPower;
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
 		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
-
+		
 
 		// leftPower = (xboxY - xboxX);
 		// rightPower = (xboxY + xboxX);
@@ -36,13 +38,23 @@ public class Drive extends Command {
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
-		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		
+		boolean aPressed = m_driverController.a();
+
+		int speedMultiplier = 1;
+
+		if (aPressed = true) {
+			 speedMultiplier = 0.1;
+		}
+
+
+		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
+		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
+		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
+		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower*speedMultiplier);
+		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower*speedMultiplier);
+		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower*speedMultiplier);
+		}
 		
 		}
 	@Override
@@ -58,4 +70,4 @@ public class Drive extends Command {
 
 	protected void interrupted() {
 	}
-}
+
