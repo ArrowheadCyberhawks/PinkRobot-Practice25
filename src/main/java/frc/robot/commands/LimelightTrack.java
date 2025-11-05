@@ -32,7 +32,7 @@ public class LimelightTrack extends Command {
             leftPower = x/100;
         }
 
-		if(a < 0.35 && a > 0) {
+		if(a < 0.84 && a > 0) {
 			leftPower += 0.3;
 			rightPower += 0.3;
 		}

@@ -31,19 +31,19 @@ public class Drive extends Command {
 
 		// leftPower = (xboxY - xboxX);
 		// rightPower = (xboxY + xboxX);
-		leftPower = xboxRY; 
-		rightPower = xboxLY; //slow modifier
+		leftPower = xboxLY; 
+		rightPower = xboxRY; //slow modifier
 
 		//i umar beg changed that to i swapped xboxry and ly so now they swap and then left stick turn and rightstiock dont maybe question mark
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
-		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
-		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);	
+		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*leftPower);
+		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*leftPower);
+		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*leftPower);
+		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*rightPower);
+		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*rightPower);
+		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*rightPower);	
 		
 		}
 	@Override
