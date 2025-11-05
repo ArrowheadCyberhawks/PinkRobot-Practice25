@@ -39,7 +39,7 @@ public class Drive extends Command {
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
 		
-		boolean aPressed = m_driverController.a();
+		boolean aPressed = public boolean getAButtonPressed();
 
 		int speedMultiplier = 1;
 
@@ -47,6 +47,17 @@ public class Drive extends Command {
 			 speedMultiplier = 0.1;
 		}
 
+		
+
+		/*
+		if(button x is pressed == true ){
+		 varible = x;
+		}
+		else{
+		varible = y
+		}
+
+		*/
 
 		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
 		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
