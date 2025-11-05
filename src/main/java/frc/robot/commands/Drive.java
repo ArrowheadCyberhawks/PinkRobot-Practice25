@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Components;
 import frc.robot.Constants;
 import frc.robot.IO;
-
+//imports documents
 
 public class Drive extends Command {
 	DatagramPacket dataPacket;
@@ -26,13 +26,15 @@ public class Drive extends Command {
 		double leftPower;
 		double rightPower;
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
-		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
+		double xboxRY = -Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX();
+		//makes it so that one set of wheels can go backwards so that it can turn
 
 
 		// leftPower = (xboxY - xboxX);
 		// rightPower = (xboxY + xboxX);
 		leftPower = xboxLY; 
-		rightPower = xboxRY; //slow modifier
+		rightPower = xboxRX; //slow modifier
+		//assigning 
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
@@ -42,6 +44,7 @@ public class Drive extends Command {
 		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
+		// multiplies percent output (power) by slow modifier to reduce sensitivity
 		
 		
 		}
