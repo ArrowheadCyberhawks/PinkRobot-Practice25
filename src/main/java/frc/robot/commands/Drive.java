@@ -1,9 +1,9 @@
-package frc.robot.commands;
+package frc.robot.commands;  
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.ControlMode;// this is my comment (made by cole)
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Components;
@@ -25,14 +25,13 @@ public class Drive extends Command {
 
 		double leftPower;
 		double rightPower;
-		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
-		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
+		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
 
 
 		// leftPower = (xboxY - xboxX);
 		// rightPower = (xboxY + xboxX);
-		leftPower = xboxLY; 
-		rightPower = xboxRY; //slow modifier
+		leftPower = xboxRY; 
+		rightPower = xboxLY; //slow modifier
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
