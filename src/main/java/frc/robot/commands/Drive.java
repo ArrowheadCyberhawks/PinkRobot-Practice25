@@ -31,8 +31,10 @@ public class Drive extends Command {
 
 		// leftPower = (xboxY - xboxX);
 		// rightPower = (xboxY + xboxX);
-		leftPower = xboxLY; 
-		rightPower = xboxRY; //slow modifier
+		leftPower = xboxRY; 
+		rightPower = xboxLY; //slow modifier
+
+		//i umar beg changed that to i swapped xboxry and ly so now they swap and then left stick turn and rightstiock dont maybe question mark
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
@@ -41,8 +43,7 @@ public class Drive extends Command {
 		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
 		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
-		
+		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);	
 		
 		}
 	@Override
