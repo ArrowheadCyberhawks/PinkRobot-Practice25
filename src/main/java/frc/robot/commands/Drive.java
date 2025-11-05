@@ -29,7 +29,7 @@ public class Drive extends Command {
 
 
 		// leftPower = (xboxY - xboxX);
-		// rightPower = (xboxY + xboxX);
+[]		// rightPower = (xboxY + xboxX);
 		leftPower = xboxRY; 
 		rightPower = xboxLY; //slow modifier
 
