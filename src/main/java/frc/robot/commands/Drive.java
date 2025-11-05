@@ -25,14 +25,21 @@ public class Drive extends Command {
 
 		double leftPower;
 		double rightPower;
-		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
-		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
+		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY() / 4 ;
+		// divide by 4 to slow it down
+		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY() / 4;
+		// divide by 4 to slow it down
 
 
 		// leftPower = (xboxY - xboxX);
 		// rightPower = (xboxY + xboxX);
-		leftPower = xboxLY; 
-		rightPower = xboxRY; //slow modifier
+		
+		// leftPower = xboxLY; 
+		// rightPower = xboxRY; //slow modifier
+
+		// invert controls
+		leftPower = xboxRY; 
+		rightPower = xboxLY; //slow modifier
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
