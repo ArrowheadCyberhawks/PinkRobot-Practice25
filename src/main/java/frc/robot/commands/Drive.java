@@ -21,21 +21,28 @@ public class Drive extends Command {
 	}
 
 	public void execute(){
-		
-
+    
 		double leftPower;
 		double rightPower;
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
 		double xboxRX = -Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX();
 		//makes it so that one set of wheels can go backwards so that it can turn
-
-
-		leftPower = (xboxRX - xboxLY);
-		rightPower = (xboxRX + xboxLY);
+	
+		boolean Abutton = IO.xboxDrive.getAButton();
+	
+		if (Abutton) {
+			// Make robot spin in a circle when A is pressed
+			leftPower = 0.75;   // Left side goes forward at 75% speed
+			rightPower = 0.40;  // Right side goes forward at 40% speed
+		} else {
+			// Normal driving mode
+			leftPower = (xboxRX - xboxLY);
+			rightPower = (xboxRX + xboxLY);
+		}
 		//leftPower = xboxLY; 
 		//rightPower = xboxRY; //slow modifier
 		//assigning 
-
+	
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
 		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower);
@@ -45,15 +52,7 @@ public class Drive extends Command {
 		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		// multiplies percent output (power) by slow modifier to reduce sensitivity
-		
-		boolean Abutton = getAButton();
-
-		if (Abutton = true) {
-			leftPower
-		}
-		//when A button pressed spin robot left;
-
-		}
+	}
 	@Override
 	public void initialize() {
 	}
