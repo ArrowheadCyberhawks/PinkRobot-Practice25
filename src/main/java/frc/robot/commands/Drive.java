@@ -44,7 +44,7 @@ public class Drive extends Command {
 		public boolean getAButtonPressed();
 		public boolean getBButtonPressed();
 		
-		int goSpeed = 0;
+		int speedMultiplier = 0; // not a multipliyer but added to move command.
 
 		if (getAButtonPressed) {
 			oneSec.start();
@@ -68,12 +68,12 @@ public class Drive extends Command {
 
 		*/
 
-		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
-		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
-		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower*speedMultiplier);
-		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower*speedMultiplier);
-		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower*speedMultiplier);
-		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower*speedMultiplier);
+		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedMultiplier);
+		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedMultiplier);
+		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedMultiplier);
+		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower+speedMultiplier);
+		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower+speedMultiplier);
+		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower+speedMultiplier);
 		}
 		
 		}
