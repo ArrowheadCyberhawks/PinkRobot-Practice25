@@ -51,7 +51,7 @@ public class Drive extends Command {
 		if (aPressed && debounceee == false) {
 			debounceee = true;
 			counter = 0;
-			 speedMultiplier = 0.1;
+			 speedMultiplier = 1;
 
 		}
 
