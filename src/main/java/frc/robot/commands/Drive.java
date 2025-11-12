@@ -58,7 +58,7 @@ public class Drive extends Command {
 		if (counter >= 50 && debounceee == true) {
 			speedMultiplier = 0;
 			counter = 0;
-		}
+		} 
 		if (debounceee == true) {
 		counter += 1;
 		}
