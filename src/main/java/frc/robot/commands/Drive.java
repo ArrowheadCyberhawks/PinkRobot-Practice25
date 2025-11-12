@@ -28,6 +28,12 @@ public class Drive extends Command {
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
 		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
 
+		if(IO.xboxDrive.getAButtonPressed()){
+			
+			//spin
+		}
+
+
 
 		// leftPower = (xboxY - xboxX);
 		// rightPower = (xboxY + xboxX);
