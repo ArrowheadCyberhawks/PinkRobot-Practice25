@@ -46,7 +46,13 @@ public class Drive extends Command {
 		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		// multiplies percent output (power) by slow modifier to reduce sensitivity
 		
-		
+		boolean Abutton = getAButton();
+
+		if (Abutton = true) {
+			leftPower
+		}
+		//when A button pressed spin robot left;
+
 		}
 	@Override
 	public void initialize() {
