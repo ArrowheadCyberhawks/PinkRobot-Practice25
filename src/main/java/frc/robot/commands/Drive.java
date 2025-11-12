@@ -29,9 +29,20 @@ public class Drive extends Command {
 
 
 		// leftPower = (xboxY - xboxX);
-[]		// rightPower = (xboxY + xboxX);
+		// rightPower = (xboxY + xboxX);
 		leftPower = xboxRY; 
 		rightPower = xboxLY; //slow modifier
+
+		boolean BButton;
+			BButton = io.xboxDrive.getBButton();
+			if (BButton) { // idk what this is im lowk just follwing my imagination
+			leftPower() = 0.75; //75 percent prolly
+			rightPower() = 0.45;// prolly 45 percent
+			else {
+			leftPower = xboxRY; 
+			rightPower = xboxLY;
+			}
+			}
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
@@ -42,7 +53,7 @@ public class Drive extends Command {
 		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower);
 		
-		
+
 		}
 	@Override
 	public void initialize() {
