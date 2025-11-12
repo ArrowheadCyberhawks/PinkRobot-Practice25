@@ -4,7 +4,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import edu.wpi.first.wpilibj.Timer;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Components;
 import frc.robot.Constants;
@@ -16,7 +18,7 @@ public class Drive extends Command {
 	DatagramSocket dataSocket;
 	
 	boolean reverse = false;
-
+	 static final public oneSec = new Timer();
 	public Drive() {
 	}
 
@@ -39,12 +41,19 @@ public class Drive extends Command {
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
 		
-		boolean aPressed = public boolean getAButtonPressed();
+		public boolean getAButtonPressed();
+		public boolean getBButtonPressed();
+		
+		int goSpeed = 0;
 
-		int speedMultiplier = 1;
+		if (getAButtonPressed) {
+			oneSec.start();
+			 speedMultiplier = 1;
+			oneSec.restart();
+		}
 
-		if (aPressed = true) {
-			 speedMultiplier = 0.1;
+		if (getBButtonPressed || oneSec.get() >= 1) {
+			speedMultiplier = 0;
 		}
 
 		
