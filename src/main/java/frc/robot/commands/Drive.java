@@ -6,7 +6,6 @@ import java.net.DatagramSocket;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 
-import edu.wpi.first.wpilibj.Timer; // new timer thing, probably won't work.
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Components;
@@ -19,9 +18,9 @@ public class Drive extends Command {
 	DatagramSocket dataSocket;
 	int counter = 0;
 	boolean reverse = false;
-			int speedMultiplier = 0; // not a multipliyer but added to move command.
+			double speedMultiplier = 0; // not a multipliyer but added to move command.
 			boolean debounceee = false;
-	 static final public Timer oneSec = new Timer();
+
 	public Drive() {
 	}
 
@@ -63,7 +62,12 @@ public class Drive extends Command {
 		if (debounceee == true) {
 		counter += 1;
 		}
+		
 
+		if (bPressed) {
+			speedMultiplier = 0;
+			counter = 500;
+		}
 		/*
 		if(button x is pressed == true ){
 		 varible = x;
@@ -82,7 +86,7 @@ public class Drive extends Command {
 		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedMultiplier);
 		}
 		
-		}
+		
 	@Override
 	public void initialize() {
 	}
@@ -96,4 +100,4 @@ public class Drive extends Command {
 
 	protected void interrupted() {
 	}
-
+}
