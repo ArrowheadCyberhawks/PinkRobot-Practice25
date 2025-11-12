@@ -48,7 +48,7 @@ public class Drive extends Command {
 
 		if (getAButtonPressed) {
 			oneSec.start();
-			 speedMultiplier = 1;
+			 speedMultiplier = 0.1;
 			oneSec.restart();
 		}
 
