@@ -4,9 +4,10 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import edu.wpi.first.wpilibj.Timer;
 
-import edu.wpi.first.wpilibj.Timer;
+
+import edu.wpi.first.wpilibj.Timer; // new timer thing, probably won't work.
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Components;
 import frc.robot.Constants;
@@ -18,7 +19,7 @@ public class Drive extends Command {
 	DatagramSocket dataSocket;
 	
 	boolean reverse = false;
-	 static final public oneSec = new Timer();
+	 static final public Timer oneSec = new Timer();
 	public Drive() {
 	}
 
@@ -41,19 +42,21 @@ public class Drive extends Command {
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
 		
-		public boolean getAButtonPressed();
-		public boolean getBButtonPressed();
+		boolean aPressed = IO.xboxDrive.getAButtonPressed();
+		boolean bPressed = IO.xboxDrive.getBButtonPressed();
 		
 		int speedMultiplier = 0; // not a multipliyer but added to move command.
 
-		if (getAButtonPressed) {
+		if (aPressed) {
 			oneSec.start();
 			 speedMultiplier = 0.1;
-			oneSec.restart();
+
 		}
 
-		if (getBButtonPressed || oneSec.get() >= 1) {
+		if (bPressed || oneSec.get() >= 1) {
 			speedMultiplier = 0;
+				oneSec.restart();
+				oneSec.stop();
 		}
 
 		
