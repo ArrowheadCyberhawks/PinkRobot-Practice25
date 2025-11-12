@@ -49,18 +49,18 @@ public class Drive extends Command {
 		
 
 
-		if (aPressed && debounceee = false) {
+		if (aPressed && debounceee == false) {
 			debounceee = true;
 			counter = 0;
 			 speedMultiplier = 0.1;
 
 		}
 
-		if (counter >= 50 && debounceee = true) {
+		if (counter >= 50 && debounceee == true) {
 			speedMultiplier = 0;
 			counter = 0;
 		}
-		if debounceee = true {
+		if (debounceee == true) {
 		counter += 1;
 		}
 
