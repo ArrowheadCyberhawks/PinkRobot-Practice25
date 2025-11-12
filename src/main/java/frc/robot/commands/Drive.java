@@ -17,15 +17,17 @@ import frc.robot.IO;
 public class Drive extends Command {
 	DatagramPacket dataPacket;
 	DatagramSocket dataSocket;
-	
+	int counter = 0;
 	boolean reverse = false;
+			int speedMultiplier = 0; // not a multipliyer but added to move command.
+			boolean debounceee = false;
 	 static final public Timer oneSec = new Timer();
 	public Drive() {
 	}
 
 	public void execute(){
 
-
+		
 
 
 		double leftPower;
@@ -45,21 +47,22 @@ public class Drive extends Command {
 		boolean aPressed = IO.xboxDrive.getAButtonPressed();
 		boolean bPressed = IO.xboxDrive.getBButtonPressed();
 		
-		int speedMultiplier = 0; // not a multipliyer but added to move command.
 
-		if (aPressed) {
-			oneSec.start();
+
+		if (aPressed && debounceee = false) {
+			debounceee = true;
+			counter = 0;
 			 speedMultiplier = 0.1;
 
 		}
 
-		if (bPressed || oneSec.get() >= 1) {
+		if (counter >= 50 && debounceee = true) {
 			speedMultiplier = 0;
-				oneSec.restart();
-				oneSec.stop();
+			counter = 0;
 		}
-
-		
+		if debounceee = true {
+		counter += 1;
+		}
 
 		/*
 		if(button x is pressed == true ){
@@ -74,9 +77,9 @@ public class Drive extends Command {
 		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedMultiplier);
 		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedMultiplier);
 		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedMultiplier);
-		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower+speedMultiplier);
-		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower+speedMultiplier);
-		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower+speedMultiplier);
+		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedMultiplier);
+		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedMultiplier);
+		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedMultiplier);
 		}
 		
 		}
