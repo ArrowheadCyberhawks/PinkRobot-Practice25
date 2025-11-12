@@ -39,6 +39,20 @@ public class Drive extends Command {
 			leftPower = (xboxRX - xboxLY);
 			rightPower = (xboxRX + xboxLY);
 		}
+		
+		Boolean Bbutton = Io,xboxDrive.getBbutton();
+
+
+		If (Bbutton) {
+			leftPower = 0.5; 	//left side goes forward at 50% sped
+			rightPower = 0.5;	//Right side goes forward at 50% sped
+			// Make robot move forward cause same motor speed
+		} else {
+			// arcade mode
+			leftPower = (xboxRX - xboxLY);
+			rightPower = (xboxRX + xboxLY);
+		}
+
 		//leftPower = xboxLY; 
 		//rightPower = xboxRY; //slow modifier
 		//assigning 
