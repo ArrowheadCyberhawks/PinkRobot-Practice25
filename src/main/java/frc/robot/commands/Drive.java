@@ -26,36 +26,27 @@ public class Drive extends Command {
 		double rightPower;
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
 		double xboxRX = -Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX();
-		//makes it so that one set of wheels can go backwards so that it can turn
+		//calculates joystick  axis to keep poitive and not give error because of negative
 	
-		boolean Abutton = IO.xboxDrive.getAButton();
-	
+		Boolean Abutton = IO.xboxDrive.getAButton();
+		Boolean Bbutton = IO.xboxDrive.getBbutton();
+
 		if (Abutton) {
-			// Make robot spin in a circle when A is pressed
-			leftPower = 0.75;   // Left side goes forward at 75% speed
-			rightPower = 0.40;  // Right side goes forward at 40% speed
+			//Make robot spin in a circle when A is pressed
+			leftPower = 0.75;   //Left side goes forward at 75% speed
+			rightPower = 0.40;  //Right side goes forward at 40% speed
+		} else if (Bbutton) {
+			leftPower = 0.5; 	//left side goes forward at 50% speed
+			rightPower = 0.5;	//Right side goes forward at 50% speed
 		} else {
-			// Normal driving mode
-			leftPower = (xboxRX - xboxLY);
-			rightPower = (xboxRX + xboxLY);
-		}
-		
-		Boolean Bbutton = Io,xboxDrive.getBbutton();
-
-
-		If (Bbutton) {
-			leftPower = 0.5; 	//left side goes forward at 50% sped
-			rightPower = 0.5;	//Right side goes forward at 50% sped
-			// Make robot move forward cause same motor speed
-		} else {
-			// arcade mode
-			leftPower = (xboxRX - xboxLY);
-			rightPower = (xboxRX + xboxLY);
+			//arcade mode
+			leftPower = (xboxRX - xboxLY); // move robot with left joystick forward and back
+			rightPower = (xboxRX + xboxLY); // move robot with right joystick left and right
 		}
 
 		//leftPower = xboxLY; 
 		//rightPower = xboxRY; //slow modifier
-		//assigning 
+		//tank mode
 	
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
