@@ -56,7 +56,7 @@ public class Drive extends Command {
 
 		}
 
-		if (counter >= 50 && debounceee == true) {
+		if (counter >= 100 && debounceee == true) {
 			speedAdder = 0;
 			counter = 0;
 					speedOn = 0;
@@ -69,7 +69,7 @@ public class Drive extends Command {
 
 		if (bPressed) {
 			speedMultiplier = 0;
-			counter = 500;
+			counter = 10000;
 			speedOn = 0;
 		}
 		/*
