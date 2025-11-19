@@ -41,8 +41,8 @@ public class Drive extends Command {
 			rightPower = 0.5;	//Right side goes forward at 50% speed
 		} else {
 			//arcade mode
-			leftPower = (xboxLY + xboxRX); // move robot with left joystick forward and back
-			rightPower = (xboxLY - xboxRX); // move robot with right joystick left and right
+			leftPower = (xboxRX + xboxLY); // move robot with left joystick forward and back
+			rightPower = (xboxRX - xboxLY); // move robot with right joystick left and right
 		}
 
 		//leftPower = xboxLY; 
