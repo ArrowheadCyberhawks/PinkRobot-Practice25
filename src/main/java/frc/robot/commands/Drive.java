@@ -18,9 +18,15 @@ public class Drive extends Command {
 	DatagramSocket dataSocket;
 	int counter = 0;
 	boolean reverse = false;
-			double speedAdder; //added to move command.
+			double speedAdderL; //added to move command.
+			double speedAdderR;
 			boolean debounceee = false;
 	double speedOn = 0;
+	int counterChecker;
+	boolean aPressedEver = false;
+	int instructionStep;
+	 dataType[] arrayInstructions = new String[4];
+     dataType[] arrayInstructions = {"forward", "backward", "CCW", "CW"};
 	public Drive() {
 	}
 
@@ -48,29 +54,54 @@ public class Drive extends Command {
 		
 
 
-		if (aPressed && debounceee == false) {
-			debounceee = true;
-			counter = 0;
-			 speedAdder = 1;
-			 		speedOn = 1;
-
+		if (aPressed) {
+			aPressedEver = true;
 		}
 
-		if (counter >= 100 && debounceee == true) {
-			speedAdder = 0;
-			counter = 0;
-					speedOn = 0;
-		} 
-		if (debounceee == true) {
-		counter += 1;
+		if (aPressedEver) {
+			 mode = arrayInstructions[instructionStep];
 
+				if (isFinished2) {
+					instructionStep += 1;
+				}
+
+			counter += 0.02;
 		}
+
+
+
+
 		
 
 		if (bPressed) {
 			speedAdder = 0;
-			counter = 10000;
+			counter = 100000;
 			speedOn = 0;
+		}
+
+		public boolean instructions(int instructionCounter, string mode) {
+			counterChecker = counter+instructionCounter;
+			if (counter <= instructionCounter) {
+			if (mode == "forward") {
+				speedAdderL = 0.15;
+				speedAdderR = 0.15;
+			}
+			if (mode == "CW") {
+				speedAdderL = 0.25;
+				speedAdderR = -0.25;
+			} 
+			if (mode == "CCW") {
+				speedAdderL = -0.25;
+				speedAdderR = 0.25;
+			}
+			if (mode == "back") {
+				speedAdderL = -0.15;
+				speedAdderR = -0.15;			
+			}
+			} else {
+			boolean isFinished2 = true;
+			return isFinished2;
+			}
 		}
 		/*
 		if(button x is pressed == true ){
@@ -82,13 +113,14 @@ public class Drive extends Command {
 
 		*/
 		
-		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedAdder+speedOn);
-		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedAdder+speedOn);
-		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedAdder+speedOn);
-		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdder+speedOn);
-		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdder+speedOn);
-		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdder+speedOn);
-		}
+		Components.motorR1.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedAdderR+speedOn);
+		Components.motorR2.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedAdderR+speedOn);
+		Components.motorR3.set(ControlMode.PercentOutput, Constants.Drive.slowModifier*rightPower+speedAdderR+speedOn);
+		Components.motorL1.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdderL+speedOn);
+		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdderL+speedOn);
+		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdderL+speedOn);
+
+
 		
 		
 	@Override
