@@ -28,8 +28,8 @@ public class Drive extends Command {
 		double xboxRX = -Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX();
 		//calculates joystick  axis to keep poitive and not give error because of negative
 	
-		Boolean Abutton = IO.xbo``xDrive.getAButton();
-		Boolean Bbutton = IO.xboxDrive.getBbutton();
+		Boolean Abutton = IO.xboxDrive.getAButton();
+		Boolean Bbutton = IO.xboxDrive.getBButton();
 
 		if (Abutton) {
 			//Make robot spin in a circle when A is pressed
@@ -37,7 +37,7 @@ public class Drive extends Command {
 			rightPower = 0.40;  //Right side goes forward at 40% speed
 		} else if (Bbutton) {
 			leftPower = -0.5; 	//left side goes forward at 50% speed
-			rightPower = 0.5;	//Right side goes forward at 50% speed
+			rightPower = -0.5;	//Right side goes forward at 50% speed
 		} else {
 			//arcade mode
 			leftPower = (xboxRX - xboxLY); // move robot with left joystick forward and back
