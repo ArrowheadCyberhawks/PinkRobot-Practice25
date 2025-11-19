@@ -20,7 +20,7 @@ public class Drive extends Command {
 	boolean reverse = false;
 			double speedAdder; //added to move command.
 			boolean debounceee = false;
-	double speedOn = 0
+	double speedOn = 0;
 	public Drive() {
 	}
 
@@ -68,7 +68,7 @@ public class Drive extends Command {
 		
 
 		if (bPressed) {
-			speedMultiplier = 0;
+			speedAdder = 0;
 			counter = 10000;
 			speedOn = 0;
 		}
