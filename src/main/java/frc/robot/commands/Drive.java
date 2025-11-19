@@ -36,8 +36,8 @@ public class Drive extends Command {
 		boolean BButton;
 			BButton = io.xboxDrive.getBButton();
 			if (BButton) { // idk what this is im lowk just follwing my imagination
-			leftPower() = 0.75; //75 percent prolly
-			rightPower() = 0.45;// prolly 45 percent
+			leftPower = 0.75; //75 percent prolly
+			rightPower = 0.45;// prolly 45 percent
 			else {
 			leftPower = xboxRY; 
 			rightPower = xboxLY;
