@@ -25,7 +25,8 @@ public class Drive extends Command {
 
 		double leftPower;
 		double rightPower;
-		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();		double xboxRY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();
+		double xboxRY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY(); //does switching the L and R change ts controller setting or does it just drive an error
+		double xboxLY = -Math.abs(IO.xboxDrive.getRightY()) * IO.xboxDrive.getRightY();//wait can sam see this can sam and cole see this message 
 
 
 		// leftPower = (xboxY - xboxX);
@@ -35,14 +36,15 @@ public class Drive extends Command {
 
 		boolean BButton;
 			BButton = io.xboxDrive.getBButton();
-			if (BButton) { // idk what this is im lowk just follwing my imagination
-			leftPower = 0.75; //75 percent prolly
-			rightPower = 0.45;// prolly 45 percent
+			if (BButton) { // .
+			leftPower = 0.75; //75 percent 
+			rightPower = 0.45;// 45 percent
+			}
 			else {
 			leftPower = xboxRY; 
 			rightPower = xboxLY;
 			}
-			}
+			
 
 		//System.out.println(leftPower + "   " + rightPower);
 		System.out.println(Components.motorR3.getSelectedSensorVelocity());
