@@ -35,7 +35,7 @@ public class Drive extends Command {
 		rightPower = xboxLY; //slow modifier
 
 		boolean BButton;
-			BButton = io.xboxDrive.getBButton();
+			BButton = IO.xboxDrive.getBButton();
 			if (BButton) { // .
 			leftPower = 0.75; //75 percent 
 			rightPower = 0.45;// 45 percent
