@@ -5,7 +5,7 @@ import java.net.DatagramSocket;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-
+//hi
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Components;
@@ -25,8 +25,38 @@ public class Drive extends Command {
 	int counterChecker;
 	boolean aPressedEver = false;
 	int instructionStep;
-	 dataType[] arrayInstructions = new String[4];
-     dataType[] arrayInstructions = {"forward", "backward", "CCW", "CW"};
+	String[] arrayInstructions = {"forward", "backward", "CCW", "CW", "stop"};
+	String mode = "stop";
+	boolean isFinished2 = false;
+
+
+		public boolean instructions(int instructionCounter, String mode) {
+			counterChecker = counter + instructionCounter;
+			if (counter <= instructionCounter) {
+				if (mode.equals("forward")) {
+					speedAdderL = 0.15;
+					speedAdderR = 0.15;
+				} else if (mode.equals("CW")) {
+					speedAdderL = 0.25;
+					speedAdderR = -0.25;
+				} else if (mode.equals("CCW")) {
+					speedAdderL = -0.25;
+					speedAdderR = 0.25;
+				} else if (mode.equals("backward")) {
+					speedAdderL = -0.15;
+					speedAdderR = -0.15;
+				} else if (mode.equals("stop")) {
+					speedAdderL = 0.0;
+					speedAdderR = 0.0;
+				}
+				isFinished2 = false;
+				return false;
+			} else {
+				isFinished2 = true;
+				return true;
+			}
+		}
+		
 	public Drive() {
 	}
 
@@ -58,14 +88,22 @@ public class Drive extends Command {
 			aPressedEver = true;
 		}
 
-		if (aPressedEver) {
-			 mode = arrayInstructions[instructionStep];
 
+		if (aPressedEver) {
+			if (instructionStep < arrayInstructions.length) {
+				mode = arrayInstructions[instructionStep];
+				isFinished2 = instructions(1, mode); // 1 second per instruction
 				if (isFinished2) {
 					instructionStep += 1;
+					counter = 0; // Reset counter for next instruction
+					if (instructionStep < arrayInstructions.length) {
+						mode = arrayInstructions[instructionStep];
+					} else {
+						mode = "stop";
+					}
 				}
-
-			counter += 0.02;
+				counter += 0.02;
+			}
 		}
 
 
@@ -74,35 +112,13 @@ public class Drive extends Command {
 		
 
 		if (bPressed) {
-			speedAdder = 0;
+			speedAdderL = 0;
+			speedAdderR = 0;
 			counter = 100000;
 			speedOn = 0;
 		}
 
-		public boolean instructions(int instructionCounter, string mode) {
-			counterChecker = counter+instructionCounter;
-			if (counter <= instructionCounter) {
-			if (mode == "forward") {
-				speedAdderL = 0.15;
-				speedAdderR = 0.15;
-			}
-			if (mode == "CW") {
-				speedAdderL = 0.25;
-				speedAdderR = -0.25;
-			} 
-			if (mode == "CCW") {
-				speedAdderL = -0.25;
-				speedAdderR = 0.25;
-			}
-			if (mode == "back") {
-				speedAdderL = -0.15;
-				speedAdderR = -0.15;			
-			}
-			} else {
-			boolean isFinished2 = true;
-			return isFinished2;
-			}
-		}
+
 		/*
 		if(button x is pressed == true ){
 		 varible = x;
@@ -136,4 +152,5 @@ public class Drive extends Command {
 
 	protected void interrupted() {
 	}
+
 }
