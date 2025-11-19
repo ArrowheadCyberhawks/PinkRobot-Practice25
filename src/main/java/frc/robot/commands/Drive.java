@@ -37,10 +37,10 @@ public class Drive extends Command {
 			rightPower = 0.40;  //Right side goes forward at 40% speed
 		} else if (Bbutton) {
 			leftPower = -0.5; 	//left side goes forward at 50% speed
-			rightPower = -0.5;	//Right side goes forward at 50% speed
+			rightPower = 0.5;	//Right side goes forward at 50% speed
 		} else {
 			//arcade mode
-			leftPower = (xboxRX - xboxLY); // move robot with left joystick forward and back
+			leftPower = (xboxRX + xboxLY); // move robot with left joystick forward and back
 			rightPower = (xboxRX + xboxLY); // move robot with right joystick left and right
 		}
 
