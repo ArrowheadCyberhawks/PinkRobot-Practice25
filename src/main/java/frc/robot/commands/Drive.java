@@ -18,7 +18,7 @@ public class Drive extends Command {
 	DatagramSocket dataSocket;
 	int counter = 0;
 	boolean reverse = false;
-			double speedAdderL; //added to move command.
+			double speedAdderL; 
 			double speedAdderR;
 			boolean debounceee = false;
 	double speedOn = 0;
@@ -92,7 +92,7 @@ public class Drive extends Command {
 		if (aPressedEver) {
 			if (instructionStep < arrayInstructions.length) {
 				mode = arrayInstructions[instructionStep];
-				isFinished2 = instructions(1, mode); // 1 second per instruction
+				isFinished2 = instructions(1, mode); // ~1 sec
 				if (isFinished2) {
 					instructionStep += 1;
 					counter = 0; // Reset counter for next instruction
@@ -136,7 +136,7 @@ public class Drive extends Command {
 		Components.motorL2.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdderL+speedOn);
 		Components.motorL3.set(ControlMode.PercentOutput, -Constants.Drive.slowModifier*leftPower-speedAdderL+speedOn);
 
-
+	}
 		
 		
 	@Override
@@ -152,5 +152,5 @@ public class Drive extends Command {
 
 	protected void interrupted() {
 	}
-
 }
+	
