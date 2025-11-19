@@ -27,9 +27,9 @@ public class Drive extends Command {
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
 		double xboxRX = -Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX();
 		//calculates joystick  axis to keep poitive and not give error because of negative
-	
+		
 		Boolean Abutton = IO.xboxDrive.getAButton();
-		Boolean Bbutton = IO.xboxDrive.getBbutton();
+		Boolean Bbutton = IO.xboxDrive.getBButton();
 
 		if (Abutton) {
 			//Make robot spin in a circle when A is pressed
