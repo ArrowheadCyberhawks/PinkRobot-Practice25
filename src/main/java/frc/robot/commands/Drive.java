@@ -26,6 +26,7 @@ public class Drive extends Command {
 		double rightPower;
 		double xboxLY = Math.abs(IO.xboxDrive.getLeftY()) * IO.xboxDrive.getLeftY();
 		double xboxRX = -Math.abs(IO.xboxDrive.getRightX()) * IO.xboxDrive.getRightX();
+		
 		//calculates joystick  axis to keep poitive and not give error because of negative
 	
 		Boolean Abutton = IO.xboxDrive.getAButton();
@@ -40,7 +41,7 @@ public class Drive extends Command {
 			rightPower = 0.5;	//Right side goes forward at 50% speed
 		} else {
 			//arcade mode
-			leftPower = (xboxRX + xboxLY); // move robot with left joystick forward and back
+			leftPower = (xboxLY - xboxRX); // move robot with left joystick forward and back
 			rightPower = (xboxRX + xboxLY); // move robot with right joystick left and right
 		}
 
